@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <style>
+            .accordion {
+                background-color: #eee;
+                color: #444;
+                cursor: pointer;
+                padding: 10px;
+                width:auto;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+                margin-top: 5px
+            }
+    
+            .panel {
+                padding: 0 11px;
+                background-color: rgb(249, 248, 252);
+                width: auto;
+            }
+            input[type=text], select ,input[type=date]{
+                width: auto;
+                padding: 15px 15px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+            }
+            
+            label{
+                width: 400px;
+                padding: 15px 15px;
+                display: inline-block;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+                font-size: 15px;
+            }
+            .addemployee-button{
+                    border: none;
+                    background-color: blue;
+                    border-radius: 1px;
+                    padding: 7px 25px;
+                    font-size: 15px;
+                    color: white;
+                }
+                .newid:focus{
+                    border: none;
+                    outline: none;
+                }
+        </style>
+            {% include "itw/menufile.html" %}
+            <form action="/employee/addemployee/addEmpSubmitClicked" method="POST">
+                {% csrf_token %}
+                <div class="accordion">Employee Details</div>
+                <div class="panel">
+                    <div style="display: inline-flex;flex-direction: row; margin-top: 20px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Employee Name</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <input type="text" placeholder="Enter Employee Full Name" name="empName">
+                        </div>
+                    </div>
+                    </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Contact No.</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <input type="text" placeholder="Enter employee mobile number" name="empContact">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="accordion">Salary</div>
+                <div class="panel">
+                    <div style="display: inline-flex;flex-direction: row; margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Monthly Salary</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width:auto;">
+                            <input type="text" placeholder="Enter monthly salary" name="empMSalary">
+                        </div>
+                    </div>
+                    </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Daily wages</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;margin-bottom: 5px;width:auto;">
+                            <input type="text" placeholder="Enter daily wages" name="empDWages">
+                        </div>
+                    </div>
+                    </br>
+                </div>
+        
+                <div class="accordion">Bank Details</div>
+                <div class="panel">
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Bank Name</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width:auto;">
+                            <input type="text" placeholder="Enter Bank Name" name="empBankName">
+                        </div>
+                    </div>
+                </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>IFSC Code</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width:auto;">
+                            <input type="text" placeholder="Bank IFSC" name="empBankCode">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="accordion">Additional Details</div>
+                <div class="panel">
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Department</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width:auto;">
+                            <input type="text" placeholder="Department" name="empDep">
+                        </div>
+                    </div>
+                </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Date of Birth</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width:auto;">
+                            <input type="date" placeholder="Date of Birth" name="empDOB">
+                        </div>
+                    </div>
+                </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Date of Joining</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width:auto;">
+                            <input type="date" placeholder="Date Of Joining" name="empDOJ">
+                        </div>
+                    </div>
+                </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Employee ID</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width:auto;">
+                            <input type="text" value="{{ empdata }}" name="newEmpID" class="newid" style="border: none;" readonly>
+                        </div>
+                    </div>
+                </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;width: auto;">
+                            <label>Email ID</label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;width:auto;">
+                            <input type="text" placeholder="example@gmail.com" name="empEmail">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="addemployee-button-container" style="margin-top: 15px;">
+                    <button  type="submit" class="addemployee-button" >Submit</button>
+                </div>
+            </form>
+            
+    </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <style>
+            body{
+                background-color: rgb(240, 220, 220);
+            }
+        </style>
+        {% include "itw/menufileemp.html" %}
+        <fieldset style="height: auto;width: auto;background-color: rgb(255, 255, 255);border: 1px solid black;margin-top: 5px; border-radius: 25px 25px 0px 0px;border-bottom: none;">
+            <legend style="background-color: rgb(248, 247, 247);border-radius: 25px;width:50px;height: 50px;">
+                <div style="border: 1px solid black;border-radius: 50%;width:50px;height: 50px;">
+                    <img src="#">
+                </div>
+            </legend>
+             
+            <div style="display: inline-flex;flex-direction: row;">
+                <p style="font-weight: bolder;">Employee Name</p>
+            </div>
+        </fieldset>
+        <div style="display: flex;flex-direction: row;width: auto;background-color: white;border:1px solid black;padding: 25px 0px 25px 0px;border-top: none;">
+            <div style="display: flex;flex-direction: column;width: 100%;">
+                <div style="display: flex;flex-direction: row;width: 100%;">
+                    <div style="display: flex;flex-direction: column;align-items: center;width: 100%;">
+                        <label style="padding: 0px 0px 45px 0px;font-size: 25px;font-weight: bold;">Current Month Summary</label>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: row;width: 100%;">
+                    <div style="display: flex;flex-direction: column;width: 25%;align-items: center;">
+                        <label>Present</label>
+                        <label>2</label>
+                    </div>
+                    <div style="display: flex;flex-direction: column;width: 25%;align-items: center;">
+                        <label>Absent</label>
+                        <label>4</label>
+                    </div>
+                    <div style="display: flex;flex-direction: column;width: 25%;align-items: center;">
+                        <label>Total Days</label>
+                        <label>5</label>
+                    </div>
+                    <div style="display: flex;flex-direction: column;width: 25%;align-items: center;">
+                        <label>Holidays</label>
+                        <label>2</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex;flex-direction: row;width: 100%;background-color: white;border:1px solid black;border-radius: 0px 0px 25px 25px;padding: 25px 0px 25px 0px;border-top: none;">
+            <div style="display: flex;flex-direction: column;width: 100%;">
+                <div style="display: flex;flex-direction: row;width: 100%;">
+                    <div style="display: flex;flex-direction: column;align-items: center;width: 100%;">
+                        <label style="padding: 0px 0px 45px 0px;font-size: 25px;font-weight: bold;">Per Day</label>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: row;width: 100%;border-radius: 15px;border:1px solid rgb(194, 169, 169);">
+                    <div style="display: flex;flex-direction: column;width: 100%;">
+                        <label style="font-weight: bold;color: rgb(3, 3, 3);padding: 15px;">28-Jan-2022</label>
+                    </div>
+                    <div style="display: flex;flex-direction: column;width: 100%;padding: 15px 55px 15px 0px;align-items: flex-end;">
+                        <label style="font-weight: bold;color: red;">Absent</label>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>

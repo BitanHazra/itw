@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <style>
+            .accordion {
+                background-color: #eee;
+                color: #444;
+                cursor: pointer;
+                padding: 10px;
+                width:282px;
+                border: none;
+                text-align: left;
+                outline: none;
+                margin-top: 5px
+            }
+    
+            .panel {
+                padding: 0 11px;
+                background-color: rgb(249, 248, 252);
+                width: 280px;
+            }
+            input[type=text], select {
+                width: 100%;
+                padding: 3px 3px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+            }
+            label{
+                width: 110px;
+                padding: 6px 10px;
+                display: inline-block;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+            }
+            .addemployee-button{
+                    text-decoration: none;
+                    border: none;
+                    background-color: blue;
+                    border-radius: 1px;
+                    margin-top: 50px;
+                    text-align: center;
+                    padding: 7px 25px;
+                    color: white;
+                    margin-left:30px;
+                    
+                }
+            </style>
+            {% include "itw/menufile.html" %}
+            <div class="accordion">Employee Details</div>
+            <div class="panel">
+                <div style="display: inline-flex;flex-direction: row; margin-top: 20px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Employee Name</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Enter Employee Full Name">
+                    </div>
+                </div>
+                </br>
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Contact No.</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Enter employee mobile number">
+                    </div>
+                </div>
+                </br>
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Working Shift</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;margin-bottom: 5px;width: 150px;margin-left: 40px;">
+                        <select name="cars" id="cars" >
+                            <option class="select-items-shift" value="morning-shift">Morning</option>
+                            <option class="select-items-shift"  value="night-shift">Night</option>
+                            <option class="select-items-shift"  value="flexi">Flexible</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion">Salary</div>
+            <div class="panel">
+                <div style="display: inline-flex;flex-direction: row; margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Monthly Salary</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Enter monthly salary">
+                    </div>
+                </div>
+                </br>
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Daily wages</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;margin-bottom: 5px;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Enter daily wages">
+                    </div>
+                </div>
+                </br>
+            </div>
+    
+            <div class="accordion">Bank Details</div>
+            <div class="panel">
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Bank Name</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Enter Bank Name">
+                    </div>
+                </div>
+            </br>
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>IFSC Code</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Bank IFSC">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion">Additional Details</div>
+            <div class="panel">
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Department</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Enter Bank Name">
+                    </div>
+                </div>
+            </br>
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Date of Birth</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Bank IFSC">
+                    </div>
+                </div>
+            </br>
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Date of Joining</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Enter Bank Name">
+                    </div>
+                </div>
+            </br>
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Employee ID</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Bank IFSC">
+                    </div>
+                </div>
+            </br>
+                <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                    <div style="display: inline-flex;flex-direction: column;width: 80px;">
+                        <label>Email ID</label>
+                    </div>
+                    <div style="display: inline-flex;flex-direction: column;width: 150px;margin-left: 40px;">
+                        <input type="text" placeholder="Bank IFSC">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="addemployee-button-container" style="margin-top: 50px;margin-left: 80px">
+                <a href="#" class="addemployee-button">Submit</a>
+            </div>
+        
+    </body>
+</html>

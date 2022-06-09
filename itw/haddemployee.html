@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    </head>
+    <body>
+        {% include "itw/menufile.html" %}
+        <style>
+            body{
+                    background-color: rgb(240, 220, 220);
+            }  
+                .itw-att-homeheade{
+                    width:auto;
+                    height: 80px;
+                    background-color: rgb(4, 56, 134);
+                    margin-top: 5px
+                }
+                .itw-att-empl1-cont{
+                    width:auto;
+                    background-color: rgb(255, 255, 255);
+                    margin-top: 2px;
+                    border-radius: 15px;
+                    border: 1px solid rgb(110, 98, 98);
+                    padding: 10px;
+                }
+                .side1{
+                    width:20px;
+                    height: 50px;
+                }
+                .side2{
+                    width:50px;
+                    height: 50px;
+                    margin-left: 20px;
+                }
+                .addemployee-button{
+                    text-decoration: none;
+                    border: none;
+                    background-color: blue;
+                    border-radius: 1px;
+                    margin-top: 50px;
+                    text-align: center;
+                    padding: 15px 50px;
+                    font-size: 15px;
+                    color: white;
+                    
+                    
+                }
+                .addemp-profile-pic{
+                    border-radius: 50px;
+                    border: 1px solid black;
+                    width: 35px;
+                    height: 35px;
+                }
+                .addemp-name{
+                    width: 150px;
+                    height: 15px;
+                    color: black;
+                    font-weight: bold;
+                    font-size: small;
+                }
+                .addemp-punchtime{
+                    margin-top: 5px;
+                    width: 140px;
+                    height: 25px;
+                    color: rgb(168, 25, 25);
+                    font-weight: bold;
+                    font-size: small;
+                }
+                .addemp-punch-summery {
+                    border: 1px solid olive;
+                    border-radius: 20px;
+                    width: 140px;
+                    padding: 5px;
+                    text-align: center;
+                    overflow: hidden;
+                }
+                
+                .addemp-present-details{
+                    display: inline-flex; 
+                    flex-direction: column;
+                    margin-left: 15px;
+                    color: rgb(252, 252, 244);
+                    font-size: 15px;
+                    margin-top: 15px;
+                }
+                .side3{
+                        width:90px;
+                        height: 10px;    
+                        display: inline-flex;
+                        flex-direction: column;
+                        float: right;
+                        margin-right: 10px;
+                        padding: 20px;
+                        
+                    }
+                    .addemp-viewdetails{
+                        margin-left: 5px;
+                    }
+               
+            .panel {
+                padding: 15px 0px 15px 15px;
+                background-color: white;
+                border-radius: 0px 0px 15px 15px;
+                max-height: auto;
+                width: 100%;
+                transition: max-height 0.2s ease-out;
+            }
+            .astat{
+                text-decoration: none;
+                padding:2px;
+                margin-top:25px;
+                width:20px;
+                border-radius: 50%;
+                background-color: red;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+            }
+            .header{
+                background-color: rgb(89, 89, 187);
+                color: white;
+                padding: 25px 0px 25px 0px;
+                font-weight: bold;
+                text-align: center;
+            }
+            </style>
+        <div style="display: flex;flex-direction: row;width: 100%;position: relative;">
+            <div style="display:flex;flex-direction: column;width: 100%;">
+                <div style="display: flex;flex-direction: row;width: 100%;"class="header">
+                    <div style="display: flex;flex-direction: column;width: 10%;" >
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div style="display:flex;flex-direction: column;width: 100%;">
+                                <label>Present</label>
+                                <label>{{ totalP }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;width: 10%;" >
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div style="display:flex;flex-direction: column;width: 100%;">
+                                <label>Absent</label>
+                                <label>{{ totalA }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;width: 10%;" >
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div style="display:flex;flex-direction: column;width: 100%;">
+                                <label>Total</label>
+                                <label>{{ totalemp }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for x,y,z,a in EmpData %}
+        <div style="display: flex;flex-direction: row;width: 100%;position: relative;">
+            <div style="display:flex;flex-direction: column;width: 100%;">
+                <div style="display: flex;flex-direction: row;width: 100%;">
+                    <div style="display: flex;flex-direction: column;width: 80%;border-right: none;border-radius: 25px 0px 0px 25px;" class="itw-att-empl1-cont">
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div style="display: flex;flex-direction: column;width: 80%;">
+                                <div style="display: flex;flex-direction: row;width: 100%;">
+                                    <div style="display: flex;flex-direction: column;width: 10%;">
+                                        <img style="border-radius: 80%;" src="#">
+                                    </div>
+                                    <div style="display: flex;flex-direction: column;width: 90%;padding: 0px 0px 0px 15px;">
+                                        <div style="display: flex;flex-direction: row;width: 100%;">
+                                            <div style="display: flex;flex-direction: column;width: 100%;">
+                                                <label>{{ x }}</label>
+                                            </div>
+                                        </div>
+                                        <div style="display: flex;flex-direction: row;width: 100%;margin-top: 10px;">
+                                            <div style="display: flex;flex-direction: column;width: 100%;">
+                                                <label style="border: 2px solid orange;width: 280px;border-radius: 15px;padding: 5px;"><span><span style="font-weight: bold;">IN:-</span>{{ y }}  -- </span><span><span style="font-weight: bold;">OUT:-</span>{{ z }}</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex;flex-direction: column;width: 20%;">
+                            
+                            </div>
+                        </div>    
+                    </div>
+                    <div style="display: flex;flex-direction: column;width: 20%;border-left: none;border-radius: 0px 25px 25px 0px;"class="itw-att-empl1-cont">
+                        <div style="display: flex;flex-direction: row;width: 100%;">
+                            <div style="display: flex;flex-direction: column;width: 50%;">
+                                <a href="/employee/punch" class="astat"> {{ a }}</a>
+                            </div>
+                            <div style="display: flex;flex-direction: column;width: 50%;">
+                                <a href="/employee/punch" style="text-decoration: none;padding: 25px;">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        
+        
+        <div class="addemployee-button-container" style="margin-top: 30px;text-align: center;">
+            <a href="/employee/addemployee" class="addemployee-button">+ Add Employee</a>
+        </div>
+        <script>
+            console.log(Date());
+        </script>
+    </body>
+</html>

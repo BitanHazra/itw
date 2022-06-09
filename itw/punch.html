@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <body>
+      {% include "itw/menufileemp.html" %}
+      {% csrf_token %}
+      <script>
+        function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+        }
+      </script>
+      <style>
+        .switch {
+                position: relative;
+                display: inline-block;
+                width: 45px;
+                height: 30px;
+                }
+
+                .switch input { 
+                opacity: 0;
+                width: 0;
+                height: 0;
+                }
+
+                .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+                }
+
+                .slider:before {
+                position: absolute;
+                content: "";
+                height: 20px;
+                width: 18px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+                }
+
+                input:checked + .slider {
+                background-color: #2196F3;
+                }
+
+                input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+                }
+
+                input:checked + .slider:before {
+                -webkit-transform: translateX(15px);
+                -ms-transform: translateX(15px);
+                transform: translateX(15px);
+                }
+
+                /* Rounded sliders */
+                .slider.round {
+                border-radius: 34px;
+                }
+
+                .slider.round:before {
+                border-radius: 50%;
+                }
+      </style>
+        <div style="display: flex;flex-direction: row;width: 100%;">
+          <div style="display: flex;flex-direction: column;width: 100%;">
+            <div style="display: flex;flex-direction: row;width: 100%;">
+              <div style="display: flex;flex-direction: column;width:50%;align-items: center;padding: 35px;">
+                <label style="font-size: 20px;font-weight: bold;">Punch IN</label>
+                <div style="border: 1px solid black;padding: 15px;margin-top: 15px;">
+                  <label>punch IN :</label><label id="pint">{{ inTimeS }}</label>
+                </div>
+              </div>
+              
+              <div style="display: flex;flex-direction: column;width:50%;align-items: center;">
+                {% if empDataAt.epdaEmpIN == 'Not Punched' %}
+                <div style="padding: 25px;">
+                  <label class="switch" onclick="getPunchIn()" id="inSwitch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                  </label>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div style="display: flex;flex-direction: row;width: 100%;">
+              <div style="display: flex;flex-direction: column;width:50%;align-items: center;padding: 35px;">
+                <label style="font-size: 20px;font-weight: bold;">Punch OUT</label>
+                <div style="border: 1px solid black;padding: 15px;margin-top: 15px;">
+                  <label>punch OUT:</label><label id="poutt">{{ outTimeS }}</label>
+                </div>
+              </div>
+              <div style="display: flex;flex-direction: column;width:50%;align-items: center;">
+                {% if empDataAt.epdaEmpOUT == 'Not Punched' %}
+                <div style="padding: 25px;">
+                  <label class="switch" onclick="getPunchOut()" id="outPunch" style="display: none;">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                  </label>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          function getPunchIn(){
+            const pINdate = new Date();
+             if(pINdate.getHours() >12)
+             {
+               var pm ='PM';
+             }else{
+              var pm ='AM';
+             }
+             var empInTime = pINdate.getHours()+":"+pINdate.getMinutes()+":"+pINdate.getSeconds()+" "+"PM";
+             var empDate = pINdate.getFullYear()+"-"+pINdate.getMonth()+"-"+pINdate.getDate();
+              const csrftoken = getCookie('csrftoken');
+              
+              $.ajax({
+              headers: {
+                  'X-CSRFToken': csrftoken},
+                type:'POST',
+                url:"/punchAjaxCall/empIn",
+                data:{'empInTime':empInTime,'empInTimeDate':empDate,'empOutTime':'000'},
+                success:function(data){
+                  $('#pint').text(empInTime);
+                  $('#inSwitch').css('display','none');
+                  $('#outPunch').css('display','block');
+                }
+            })
+          }
+
+
+          function getPunchOut(){
+            
+            const pOUTdate = new Date();
+             if(pOUTdate.getHours() >12)
+             {
+               var pm ='PM';
+             }else{
+              var pm ='AM';
+             }
+             var empOutTime = pOUTdate.getHours()+":"+pOUTdate.getMinutes()+":"+pOUTdate.getSeconds()+" "+"PM";
+             var empOutDate = pOUTdate.getFullYear()+"-"+pOUTdate.getMonth()+"-"+pOUTdate.getDate();
+              var empINTime = document.getElementById('pint').innerHTML;
+              const csrftoken = getCookie('csrftoken');
+              $.ajax({
+              headers: {
+                  'X-CSRFToken': csrftoken},
+                type:'POST',
+                url:"/punchAjaxCall/empIn",
+                data:{'empInTime':empINTime,'empInTimeDate':empOutDate,'empOutTime':empOutTime},
+                success:function(data){
+                  
+                  $('#poutt').text(empINTime);
+                  $('#outPunch').css('display','none');
+                }
+            })
+          }
+        </script>
+    </body>
+</html>

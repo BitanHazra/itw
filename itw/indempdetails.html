@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <style>
+            .summary-text{
+                display: flex;
+                flex-direction: column;
+                margin-left: 10px;
+
+            }
+            .summary-text p{
+                text-align: center;
+                font-weight: bold;
+            }
+        </style>
+        {% include "itw/menufile.html" %}
+        <fieldset style="height: auto;width: auto;background-color: rgb(255, 255, 255);border: 1px solid black;margin-top: 5px; ">
+            <legend style="background-color: chocolate;border-radius: 50%;width:50px;height: 50px;">
+                <div style="border: 1px solid black;border-radius: 50%;width:50px;height: 50px;">
+                    <img src="#">
+                </div>
+            </legend>
+            <div style="display: flex;flex-direction: row;align-items: center;margin-left: 10px;font-weight: bold;">
+                <p>Current Month Summary</p>
+            </div>  
+            <div style="display: inline-flex;flex-direction: row;">
+                <p style="font-weight: bolder;">Employee Name</p>
+            </div>
+            <div style="display: inline-flex;flex-direction: row;">
+                <div class="summary-text">
+                    <p>Present Days</p>
+                    <p>45</p>
+                </div>
+                <div class="summary-text">
+                    <p>Absent Hrs</p>
+                    <p>45</p>
+                </div>
+                <div class="summary-text">
+                    <p>Total working Days</p>
+                    <p>45</p>
+                </div>
+                
+            </div>
+        
+        </fieldset>
+        <fieldset style="height: auto;width: auto;background-color: rgb(255, 255, 255);border: 1px solid black;">
+            <legend style="background-color: chocolate;"> 
+                Today's Details
+            </legend>
+            <div style="display:flex;flex-direction: row;">
+                <div class="summary-text">
+                    <p>Today's IN Time</p>
+                    <p>45</p>
+                </div>
+                <div class="summary-text" style="margin-left: 50px;">
+                    <p>Today's OUT Time</p>
+                    <p>45</p>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction: row;">
+                <div class="summary-text">
+                    <p>Today's Working Hrs</p>
+                    <p>45</p>
+                </div>
+            </div>
+        
+        </fieldset>
+    </body>
+</html>

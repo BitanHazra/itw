@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active, .accordion:hover {
+            background-color: rgb(109, 55, 197); 
+            color: white;
+        }
+        input[type=text], select {
+                width: auto;
+                padding: 15px 15px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+            }
+            label{
+                width: auto;
+                padding: 15px 15px;
+                display: inline-block;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+                font-size: 15px;
+            }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            overflow: hidden;
+            border: 1px solid slategray;
+            max-height: 0;
+            transition: max-height 0.2s ease-out;
+        }
+        .accordion:after {
+        content: '\02795'; 
+        font-size: 13px;
+        color: rgb(255, 253, 253);
+        float: right;
+        margin-left: 5px;
+        }
+
+        .active:after {
+        content: "\2796"; 
+        }
+        .addemployee-button{
+            border: none;
+            background-color: blue;
+            border-radius: 1px;
+            padding: 7px 25px;
+            font-size: 15px;
+            color: white;
+        }
+        </style>
+        </head>
+        <body>
+            {% include "itw/menufile.html" %}
+        <h2 style="color: rgb(8, 8, 8);background-color: #eee;text-align: center;padding: 15px; margin-top: 5px;">Add Work Details</h2>
+            <form action="/employee/addworkingtime/submitBtn" method="POST">
+                {% csrf_token %}
+                <label class="accordion">Work Timing Type</label>
+                <div class="panel">
+                    <input type="radio" name="select-shift-type" value="Morning Shift" >
+                    <label for="select-shift-type" style="font-weight: bold;">Morning Shift</label>
+                    <p style="font-size: small;font-weight: lighter;color: rgb(20, 18, 18);opacity: 0.2px;">Select morning shift if timing between 6 A.M to 6 P.M</p>
+                    <input type="radio" name="select-shift-type" value="Night Shift">
+                    <label for="select-shift-type" style="font-weight: bold;">Night Shift</label>
+                    <p style="font-size: small;font-weight: lighter;color: rgb(20, 18, 18);opacity: 0.2px;">Select Night shift if timing between 6 P.M to 6 A.M</p>
+
+                    <input type="radio" name="select-shift-type" value="Flexi">
+                    <label for="select-shift-type" style="font-weight: bold;">Flexi</label>
+                    <p style="font-size: small;font-weight: lighter;color: rgb(20, 18, 18);opacity: 0.2px;">Select morning shift if time is flexible</p>
+                </div>
+
+                <label class="accordion">Work Timing Details</label>
+                <div class="panel">
+                    <div style="display: inline-flex;flex-direction: row; margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;">
+                            <label>Employee ID </label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;">
+                            <input type="text" placeholder="Enter your Work time name" name="empId">
+                        </div>
+                    </div>
+                </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;">
+                            <label>Time IN      </label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;">
+                            <input type="text" placeholder="Enter your In time" name="timeIN">
+                        </div>
+                    </div>
+                </br>
+                    <div style="display: inline-flex;flex-direction: row;margin-top: 10px;">
+                        <div style="display: inline-flex;flex-direction: column;">
+                            <label>Time OUT      </label>
+                        </div>
+                        <div style="display: inline-flex;flex-direction: column;">
+                            <input type="text" placeholder="Enter your Out time" name="timeOUT">
+                        </div>
+                    </div>
+                </div>
+
+                <label class="accordion">Notification Timing Details</label>
+                <div class="panel">
+                    <input type="radio" name="notify" value="YES" >
+                    <label for="punch-in-notify" style="font-weight: bold;">Punch Notify</label>
+                    <p style="font-size: small;font-weight: lighter;color: rgb(20, 18, 18);opacity: 0.2px;">Select If want punching notification</p>
+                    <input type="radio" name="notify" value="NO">
+                    <label for="Not-Notify-Me" style="font-weight: bold;">Not Notify</label>
+                    <p style="font-size: small;font-weight: lighter;color: rgb(20, 18, 18);opacity: 0.2px;">Select If not want punching notification</p>
+                </div>
+                
+                <script>
+                    var acc = document.getElementsByClassName("accordion");
+                    var i;
+
+                    for (i = 0; i < acc.length; i++) {
+                        acc[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                        });
+                    }
+                </script>
+                <div class="addemployee-button-container" style="margin-top: 15px;">
+                    <button class="addemployee-button" >Submit</button>
+                </div>
+            </form>
+    </body>
+</html>

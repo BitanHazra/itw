@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+#myInput {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 2px solid rgb(8, 8, 8);
+  margin-bottom: 12px;
+  margin-top: 5px
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+.searchby{
+    width: auto;
+    height:90px;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+  {% include "itw/menufile.html" %}
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by Employee ID..........." title="Type in a name">
+<div class="searchby" >
+    <fieldset class="searchby" style="background-color: #f2f2f2;"><legend>Search By</legend>
+        <input type="radio" name="select-shift-type" value="Morning Shift" >
+        <label for="select-shift-type" style="font-weight: bold;">Emp ID</label>
+        
+        <input type="radio" name="select-shift-type" value="Night Shift">
+        <label for="select-shift-type" style="font-weight: bold;">Name</label>
+
+        <input type="radio" name="select-shift-type" value="Flexi">
+        <label for="select-shift-type" style="font-weight: bold;">Department</label>
+    </br>
+        <input type="radio" name="select-shift-type" value="Morning Shift" >
+        <label for="select-shift-type" style="font-weight: bold;">Contact</label>
+        
+        <input type="radio" name="select-shift-type" value="Night Shift">
+        <label for="select-shift-type" style="font-weight: bold;">IFSC</label>
+
+        </fieldset>
+</div>
+<div style="overflow-x: auto;">
+<table id="myTable">
+  <tr class="header">
+    <th style="width:10%;">Emp ID</th>
+    <th style="width:10%;">Name</th>
+    <th style="width:10%;">Department</th>
+    <th style="width:10%;">Salary</th>
+    <th style="width:10%;">Contact</th>
+    <th style="width:10%;">Shift</th>
+    <th style="width:10%;">IFSC</th>
+    <th style="width:10%;">Edit</th>
+  </tr>
+  {% for x in empdata %}
+  <tr>
+    <td>{{ x.empID }}</td>
+    <td>{{ x.empName }}</td>
+    <td>{{ x.empDepartment }}</td>
+    <td>{{ x.empMonthlySalary }}</td>
+    <td>{{ x.empContactNo }}</td>
+    <td>{{ x.empWorkingShift }}</td>
+    <td>{{ x.empBankIFSC }}</td>
+    <td><a href="#">Edit</a></td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+</body>
+</html>
+
+
